@@ -14,10 +14,12 @@
 ActiveRecord::Schema.define(:version => 20140207010626) do
 
   create_table "locations", :force => true do |t|
+    t.float    "long"
+    t.float    "lat"
     t.string   "tag"
-    t.string   "address"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "address"
     t.integer  "user_id"
   end
 
@@ -40,5 +42,16 @@ ActiveRecord::Schema.define(:version => 20140207010626) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "yelp_locations", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "rating"
+    t.string   "image_url"
+    t.float    "lat"
+    t.float    "long"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
